@@ -5,17 +5,20 @@ import subprocess
 import socket
 
 app = Flask(__name__)
+private_ip = socket.gethostbyname(socket.gethostname())
+
 
 @app.route('/', methods=['GET', 'POST'])
 def handler():
-    private_ip = socket.gethostbyname(socket.gethostname())
-
     if request.method == 'GET':
         return private_ip
 
     elif request.method == 'POST':
-        subprocess.Popen(["python3", "stress_cpu.py"])
-        return "stress testing starated on " + private_ip
+        try:
+            subprocess.Popen(["python3", "stress_cpu.py"])
+        except:
+            print("something wrong")
+        return "stress testing starated on: " + private_ip
 
 
 if __name__ == '__main__':
