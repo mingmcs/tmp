@@ -14,7 +14,7 @@ def handler():
         return jsonify({"private_ip": private_ip})
 
     elif request.method == 'POST':
-        subprocess.Popen(["python", "stress_cpu.py"])
+        subprocess.Popen(["python3", "stress_cpu.py"])
         return "Stressing CPU in a separate process."
 
 
