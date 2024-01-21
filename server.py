@@ -14,7 +14,7 @@ def handler():
         return private_ip
 
     elif request.method == 'POST':
-        subprocess.Popen(["python", "stress_cpu.py"])
+        subprocess.Popen(["python3", "stress_cpu.py"])
         return "stress testing starated on " + private_ip
 
 
